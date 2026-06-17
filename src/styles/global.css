@@ -1,0 +1,73 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Cores PUCPR */
+  --primary:         #8A1538; 
+  --primary-hover:   #6E112D;
+  --primary-soft:    #F9F0F2; 
+  
+  /* Neutros e Textos */
+  --bg-main:         #F7F8FA;
+  --bg-card:         #FFFFFF;
+  --text-main:       #2D3142;
+  --text-muted:      #9094A6;
+  --border-light:    #EAECEF;
+  
+  /* Feedback */
+  --success:         #219653;
+  --success-bg:      #EAF6ED;
+  --error:           #EB5757;
+  --error-bg:        #FCEEEE;
+
+  /* Tipografia */
+  --font-sans:       "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Formas e Sombras */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font-family: var(--font-sans); cursor: pointer; outline: none; }
+button:disabled { cursor: default; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #9CA3AF; }
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2.5rem;
+  min-height: calc(100vh - 70px);
+}
+
+.content-card {
+  width: 100%;
+  max-width: 850px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 600px;
+}
+
+@media (max-width: 768px) {
+  .main-container { padding: 1rem; }
+  .content-card { min-height: calc(100vh - 70px - 2rem); border-radius: var(--radius-md); }
+}

@@ -1,0 +1,36 @@
+.prova-select {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-main); padding: 2rem 1.5rem;
+}
+
+.prova-select__inner {
+  width: 100%; max-width: 600px;
+  display: flex; flex-direction: column; gap: 2rem;
+}
+
+.prova-select__header { text-align: left; border-bottom: 2px solid var(--primary); padding-bottom: 1rem; }
+.prova-select__title { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+.prova-select__subtitle { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+.prova-select__grid { display: flex; flex-direction: column; gap: 12px; }
+
+.prova-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.5rem; background: var(--bg-card);
+  border: 1px solid var(--border-color); border-radius: var(--radius-md);
+  text-align: left; transition: all 0.2s;
+}
+
+.prova-card:hover:not(:disabled) { border-color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.prova-card--disabled { opacity: 0.6; cursor: not-allowed; background: var(--bg-main); }
+
+.prova-card__content { flex: 1; }
+.prova-card__title { font-size: 16px; font-weight: 600; color: var(--text-main); margin-bottom: 0.25rem; }
+.prova-card__desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+.prova-card__badge {
+  font-size: 12px; font-weight: 600; padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm); background: var(--primary); color: #fff;
+}
+.prova-card--disabled .prova-card__badge { background: var(--text-muted); }
