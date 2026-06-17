@@ -1,8 +1,8 @@
 {
-  "name": "caderno-ia",
+ "name": "questionario-performance",
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://KvotheRuh.github.io/summary-AI--course",
+  "homepage": "https://KvotheRuh.github.io/questionario-performance",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
