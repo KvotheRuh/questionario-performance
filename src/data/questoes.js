@@ -521,12 +521,9 @@ const questoes = [
   },
 
   // ===========================================================================
-  // RA 2
+  // RA 1
   // ===========================================================================
 
-  // =========================================================================
-  // PSCF.01.01 - Arquiteturas.pdf (5 questões)
-  // =========================================================================
   {
     id: 41,
     IDProva: 2,
@@ -592,10 +589,6 @@ const questoes = [
     correct: 2,
     explanation: "A ISA funciona como o contrato entre software e hardware, definindo as instruções, registradores e modos de endereçamento que o compilador pode gerar. Já a Microarquitetura está um nível abaixo na abstração e descreve como os circuitos e blocos lógicos internos são organizados para executar aquelas instruções."
   },
-
-  // =========================================================================
-  // PSCF.01.02 - Arquiteturas.pdf (5 questões)
-  // =========================================================================
   {
     id: 46,
     IDProva: 2,
@@ -661,10 +654,6 @@ const questoes = [
     correct: 1,
     explanation: "Enquanto o Program Counter (PC) guarda o endereço da próxima instrução a ser executada, o Stack Pointer (SP) aponta sempre para o topo da pilha ativa na memória RAM, região utilizada para empilhar parâmetros de entrada, variáveis locais e o endereço de retorno do PC nas chamadas de sub-rotinas."
   },
-
-  // =========================================================================
-  // PSCF.0202 - Memoria - BSI.pdf (5 questões)
-  // =========================================================================
   {
     id: 51,
     IDProva: 2,
@@ -730,10 +719,6 @@ const questoes = [
     correct: 0,
     explanation: "A flag 'Present' informa à MMU se a página reside atualmente na RAM física (caso contrário, ocorrerá uma falta de página para buscá-la no disco). Já a flag 'Dirty' (página suja) marca que houve escrita naquela página em RAM, indicando ao SO que ela precisará ser gravada de volta no disco antes de ser substituída."
   },
-
-  // =========================================================================
-  // PSCF.0202 - Memoria pt2- tudo.pdf (5 questões)
-  // =========================================================================
   {
     id: 56,
     IDProva: 2,
@@ -760,10 +745,6 @@ const questoes = [
     correct: 3,
     explanation: "O TLB é um cache interno à MMU que armazena traduções recentes Página -> Quadro do processo ativo. Como cada processo possui seu próprio espaço de endereçamento virtual e sua própria tabela de páginas, uma troca de contexto exige a limpeza do TLB para evitar traduções incorretas."
   },
-
-  // =========================================================================
-  // PSCF.0203 - Memoria - BSI.pdf (5 questões - Alocação, Buddy e Estratégias)
-  // =========================================================================
   {
     id: 58,
     IDProva: 2,
@@ -911,10 +892,6 @@ const questoes = [
     correct: 2,
     explanation: "O LRU é simétrico ao Ótimo no eixo do tempo: enquanto o Ótimo busca a página que será acessada mais longe no futuro, o LRU remove a que foi acessada mais longe no passado. Além disso, o FIFO pode apresentar a Anomalia de Belady (aumento de faltas de página mesmo aumentando a quantidade de quadros de RAM), fenômeno que não ocorre no Ótimo nem no LRU."
   },
-
-  // =========================================================================
-  // PSCF.01.01 - Arquiteturas.pdf (+3 questões teóricas)
-  // =========================================================================
   {
     id: 69,
     IDProva: 2,
@@ -941,10 +918,6 @@ const questoes = [
     correct: 0,
     explanation: "Na arquitetura de von Neumann, dados e instruções coexistem na mesma memória principal de leitura e escrita. Cada posição é identificada unicamente pelo seu endereço numérico (localização), cabendo à CPU interpretar se os bits lidos daquele endereço representam uma instrução (via PC/IR) ou um dado."
   },
-
-  // =========================================================================
-  // PSCF.01.02 - Arquiteturas.pdf (+3 questões teóricas)
-  // =========================================================================
   {
     id: 71,
     IDProva: 2,
@@ -971,10 +944,6 @@ const questoes = [
     correct: 1,
     explanation: "O Assembly é uma representação simbólica legível por humanos da linguagem de máquina. Cada instrução Assembly corresponde a um código de operação binário (opcode) seguido dos bits de seus operandos (como endereços de memória ou registradores), que são gravados na memória e decodificados pela CPU."
   },
-
-  // =========================================================================
-  // PSCF.02.01 - Memoria (+3 questões teóricas)
-  // =========================================================================
   {
     id: 73,
     IDProva: 2,
@@ -1001,10 +970,6 @@ const questoes = [
     correct: 1,
     explanation: "Como toda instrução e dado precisam ser buscados na memória para serem processados, se a memória for muito mais lenta que a CPU, o processador fica ocioso aguardando a chegada das informações (gargalo de memória), provocando atrasos diretos no desempenho geral."
   },
-
-  // =========================================================================
-  // PSCF.0202 - Memoria - BSI.pdf (+3 questões teóricas)
-  // =========================================================================
   {
     id: 75,
     IDProva: 2,
@@ -1045,9 +1010,6 @@ const questoes = [
     explanation: "Como cada processo possui sua própria tabela de páginas na RAM, a MMU utiliza o registrador PTBR (Page Table Base Register) para localizar rapidamente o endereço base da tabela de páginas pertencente ao processo atualmente em execução na CPU."
   },
 
-  // =========================================================================
-  // PSCF.0202 - Memoria pt2- tudo.pdf (+3 questões teóricas)
-  // =========================================================================
   {
     id: 78,
     IDProva: 2,
@@ -1074,10 +1036,6 @@ const questoes = [
     correct: 1,
     explanation: "A eficiência do TLB depende tanto do comportamento do software (localidade de referências e frequência de trocas de contexto, que limpam o TLB) quanto de fatores de projeto do cache: o número de entradas suportadas pelo TLB e a política usada para substituir entradas antigas."
   },
-
-  // =========================================================================
-  // PSCF.0203 - Memoria - BSI.pdf (+3 questões teóricas)
-  // =========================================================================
   {
     id: 80,
     IDProva: 2,
@@ -1104,10 +1062,6 @@ const questoes = [
     correct: 0,
     explanation: "Desfragmentar exige mover blocos ocupados na RAM física para concatenar lacunas livres. Isso altera os endereços físicos dos blocos, demanda algoritmos de otimização combinatória para minimizar a quantidade de bytes copiados e precisa ser rápido para não travar o sistema."
   },
-
-  // =========================================================================
-  // PSCF.0204 - Memoria - BSI.pdf (+3 questões teóricas)
-  // =========================================================================
   {
     id: 82,
     IDProva: 2,

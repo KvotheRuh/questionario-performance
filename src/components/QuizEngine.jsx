@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/QuizEngine.css";
 
 export default function QuizEngine({
@@ -13,8 +13,22 @@ export default function QuizEngine({
   const [finished, setFinished] = useState(false);
   const [answers, setAnswers] = useState([]);
   const [showProvaModal, setShowProvaModal] = useState(false);
+  const [animatedPct, setAnimatedPct] = useState(0);
 
   const question = questions[currentQ];
+
+  useEffect(() => {
+    if (finished) {
+      const targetPct =
+        questions.length > 0 ? Math.round((score / questions.length) * 100) : 0;
+      const timer = setTimeout(() => {
+        setAnimatedPct(targetPct);
+      }, 60);
+      return () => clearTimeout(timer);
+    } else {
+      setAnimatedPct(0);
+    }
+  }, [finished, score, questions.length]);
 
   function handleSelect(idx) {
     if (selected !== null) return;
@@ -48,12 +62,12 @@ export default function QuizEngine({
   function handleTrocarProva(novoId) {
     setShowProvaModal(false);
     if (novoId === provaAtual) {
-      // Se escolher a mesma prova, reinicia do zero
       setCurrentQ(0);
       setSelected(null);
       setScore(0);
       setFinished(false);
       setAnswers([]);
+      setAnimatedPct(0);
     } else {
       onSelectProva(novoId);
     }
@@ -143,19 +157,54 @@ export default function QuizEngine({
   };
 
   if (finished) {
-    const pct = Math.round((score / questions.length) * 100);
+    const pct =
+      questions.length > 0 ? Math.round((score / questions.length) * 100) : 0;
+
+    // Medidas do anel SVG (140x140 com borda de 6px)
+    const size = 140;
+    const strokeWidth = 6;
+    const radius = (size - strokeWidth) / 2;
+    const circumference = 2 * Math.PI * radius;
+    const strokeDashoffset =
+      circumference - (animatedPct / 100) * circumference;
+
     return (
       <div className="quiz-result">
         {renderModal()}
 
         <h2 className="quiz-result__title">Avaliação Concluída</h2>
         <p className="quiz-result__subtitle">
-          Prova {provaAtual === 2 ? "RA2" : "RA1"} — Verifique seu desempenho final
+          Prova {provaAtual === 2 ? "RA1" : "RA2"} — Verifique seu desempenho
+          final
         </p>
 
         <div className="quiz-result__circle">
-          <span className="quiz-result__score">{score}</span>
-          <span className="quiz-result__total">de {questions.length}</span>
+          <svg
+            className="quiz-result__svg"
+            viewBox={`0 0 ${size} ${size}`}
+            aria-hidden="true"
+          >
+            <circle
+              className="quiz-result__circle-bg"
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+            />
+            <circle
+              className="quiz-result__circle-progress"
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+              strokeDasharray={circumference}
+              strokeDashoffset={strokeDashoffset}
+              style={{ opacity: animatedPct > 0 ? 1 : 0 }}
+            />
+          </svg>
+
+          <div className="quiz-result__circle-content">
+            <span className="quiz-result__score">{score}</span>
+            <span className="quiz-result__total">de {questions.length}</span>
+          </div>
         </div>
 
         <p className="quiz-result__pct">{pct}% de taxa de acerto</p>
@@ -169,6 +218,7 @@ export default function QuizEngine({
               setScore(0);
               setFinished(false);
               setAnswers([]);
+              setAnimatedPct(0);
             }}
           >
             Refazer Questionário
